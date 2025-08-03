@@ -6,15 +6,15 @@ const BottomNav = () => {
   const location = useLocation();
 
   const navItems = [
-    { path: "/home", icon: Home, label: "Home", emoji: "🏠" },
-    { path: "/analytics", icon: BarChart3, label: "Analytics", emoji: "📊" },
-    { path: "/settings", icon: Settings, label: "Settings", emoji: "⚙️" },
+    { path: "/home", icon: Home, label: "Home" },
+    { path: "/analytics", icon: BarChart3, label: "Analytics" },
+    { path: "/settings", icon: Settings, label: "Settings" },
   ];
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-water-medium/20 shadow-lg z-50">
       <div className="flex items-center justify-around h-16 px-2">
-        {navItems.map(({ path, icon: Icon, label, emoji }) => (
+        {navItems.map(({ path, icon: Icon, label }) => (
           <Link
             key={path}
             to={path}
@@ -27,7 +27,7 @@ const BottomNav = () => {
           >
             <Icon className="h-6 w-6 mb-1" />
             <span className="text-xs font-medium flex items-center gap-1">
-              {emoji} {label}
+              {label}
             </span>
           </Link>
         ))}
