@@ -71,13 +71,15 @@ const Home = () => {
   const progress = (bottleCount / preferences.dailyGoal) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-water-light via-background to-water-medium pb-20">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 bg-white/80 backdrop-blur-sm">
-        <Droplets className="h-8 w-8 text-primary" />
-        <h1 className="text-xl font-bold text-primary">HydroTracker</h1>
+      <div className="flex items-center justify-between p-4 bg-card/90 backdrop-blur-sm border-b border-water-medium/20 shadow-sm">
+        <Droplets className="h-8 w-8 text-primary animate-wave" />
+        <h1 className="text-xl font-bold text-primary flex items-center gap-2">
+          💧 HydroTracker
+        </h1>
         <Link to="/settings">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="hover:bg-water-light transition-colors">
             <Settings className="h-6 w-6" />
           </Button>
         </Link>
@@ -86,35 +88,53 @@ const Home = () => {
       {/* Main Content */}
       <div className="p-6 space-y-6">
         {/* Progress Card */}
-        <Card className="text-center">
+        <Card className="text-center border-2 border-primary/20 bg-gradient-to-b from-card to-water-light/30 shadow-lg">
           <CardContent className="pt-6">
-            <div className="text-4xl font-bold text-primary mb-2">
+            <div className="text-5xl font-bold text-primary mb-2 animate-bounce-gentle">
               {bottleCount} / {preferences.dailyGoal}
             </div>
-            <p className="text-muted-foreground mb-4">bottles today</p>
-            <Progress value={Math.min(progress, 100)} className="h-3 mb-4" />
-            <p className="text-sm text-muted-foreground">
-              {preferences.bottleSize}{preferences.unit} bottles
+            <p className="text-muted-foreground mb-4 flex items-center justify-center gap-2">
+              🍼 bottles today {bottleCount >= preferences.dailyGoal && "🎉"}
+            </p>
+            <div className="relative mb-4">
+              <Progress 
+                value={Math.min(progress, 100)} 
+                className="h-4 bg-water-light border" 
+              />
+              {progress >= 100 && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-xs font-bold text-white drop-shadow-lg">
+                    🏆 GOAL REACHED!
+                  </span>
+                </div>
+              )}
+            </div>
+            <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+              💧 {preferences.bottleSize}{preferences.unit} bottles
             </p>
           </CardContent>
         </Card>
 
         {/* Action Buttons */}
-        <div className="space-y-3">
-          <Button onClick={addBottle} size="lg" className="w-full text-lg">
+        <div className="space-y-4">
+          <Button 
+            onClick={addBottle} 
+            size="lg" 
+            className="w-full text-lg py-6 bg-gradient-to-r from-primary to-water-dark hover:from-primary/90 hover:to-water-dark/90 transition-all duration-300 animate-water-drop shadow-lg"
+          >
             <Plus className="h-6 w-6 mr-2" />
-            +1 Bottle
+            💧 +1 Bottle
           </Button>
           
           <Button 
             onClick={removeBottle} 
             variant="outline" 
             size="lg" 
-            className="w-full"
+            className="w-full border-2 border-muted hover:bg-muted/20 transition-colors"
             disabled={bottleCount === 0}
           >
             <Undo2 className="h-5 w-5 mr-2" />
-            Undo
+            ↩️ Undo
           </Button>
         </div>
       </div>

@@ -109,38 +109,52 @@ const Settings = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-water-light via-background to-water-medium pb-20">
       <div className="p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-primary">Settings</h1>
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
+            ⚙️ Settings
+          </h1>
+          <p className="text-muted-foreground mt-2">Customize your hydration experience</p>
+        </div>
 
         {/* Account Info */}
-        <Card>
+        <Card className="border-2 border-water-medium/20 bg-gradient-to-r from-card to-water-light/30">
           <CardHeader>
-            <CardTitle>Account Info</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              👤 Account Info
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground">No account - using local storage</p>
+            <p className="text-muted-foreground flex items-center gap-2">
+              💾 No account - using local storage
+            </p>
           </CardContent>
         </Card>
 
         {/* User Preferences */}
-        <Card>
+        <Card className="border-2 border-primary/20 bg-gradient-to-r from-card to-primary/5">
           <CardHeader>
-            <CardTitle>User Preferences</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              🎯 User Preferences
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="bottleSize">Bottle Size</Label>
+              <Label htmlFor="bottleSize" className="flex items-center gap-2">
+                🍼 Bottle Size
+              </Label>
               <div className="flex gap-2">
                 <Input
                   id="bottleSize"
                   type="number"
                   value={bottleSize}
                   onChange={(e) => setBottleSize(e.target.value)}
-                  className="flex-1"
+                  className="flex-1 border-water-medium/30 focus:border-primary"
+                  placeholder="16"
                 />
                 <Select value={unit} onValueChange={setUnit}>
-                  <SelectTrigger className="w-20">
+                  <SelectTrigger className="w-20 border-water-medium/30">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -153,31 +167,37 @@ const Settings = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="dailyGoal">Daily Goal (bottles)</Label>
+              <Label htmlFor="dailyGoal" className="flex items-center gap-2">
+                🏆 Daily Goal (bottles)
+              </Label>
               <Input
                 id="dailyGoal"
                 type="number"
                 value={dailyGoal}
                 onChange={(e) => setDailyGoal(e.target.value)}
+                className="border-water-medium/30 focus:border-primary"
+                placeholder="8"
               />
             </div>
 
-            <Button onClick={savePreferences} className="w-full">
-              Save Preferences
+            <Button onClick={savePreferences} className="w-full bg-gradient-to-r from-primary to-water-dark hover:from-primary/90 hover:to-water-dark/90 transition-all duration-300">
+              💾 Save Preferences
             </Button>
           </CardContent>
         </Card>
 
         {/* Data Management */}
-        <Card>
+        <Card className="border-2 border-destructive/20 bg-gradient-to-r from-card to-destructive/5">
           <CardHeader>
-            <CardTitle>Data Management</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-destructive">
+              🗂️ Data Management
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full">
-                  Reset Today's Progress
+                <Button variant="outline" className="w-full border-warning/30 hover:bg-warning/10">
+                  🔄 Reset Today's Progress
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -196,8 +216,8 @@ const Settings = () => {
 
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full">
-                  Clear All Water Logs
+                <Button variant="outline" className="w-full border-destructive/30 hover:bg-destructive/10">
+                  🗑️ Clear All Water Logs
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -218,8 +238,8 @@ const Settings = () => {
 
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="destructive" className="w-full">
-                  Clear All Data
+                <Button variant="destructive" className="w-full bg-gradient-to-r from-destructive to-destructive/80 hover:from-destructive/90 hover:to-destructive/70">
+                  ⚠️ Clear All Data
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -241,13 +261,17 @@ const Settings = () => {
         </Card>
 
         {/* About */}
-        <Card>
+        <Card className="border-2 border-accent/30 bg-gradient-to-r from-card to-accent/20">
           <CardHeader>
-            <CardTitle>About</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              ℹ️ About
+            </CardTitle>
           </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">HydroTracker v1.0</p>
-            <p className="text-muted-foreground text-sm mt-1">Built with Lovable</p>
+          <CardContent className="text-center">
+            <p className="text-primary font-semibold text-lg">💧 HydroTracker v1.0</p>
+            <p className="text-muted-foreground text-sm mt-1 flex items-center justify-center gap-1">
+              Built with ❤️ using Lovable
+            </p>
           </CardContent>
         </Card>
       </div>

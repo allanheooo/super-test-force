@@ -99,19 +99,21 @@ const Analytics = () => {
       days.push(
         <div
           key={day}
-          className={`h-12 flex flex-col items-center justify-center text-sm border rounded ${
+          className={`h-12 flex flex-col items-center justify-center text-sm border-2 rounded-lg transition-all duration-200 ${
             isFuture 
-              ? 'text-muted-foreground bg-muted/30' 
+              ? 'text-muted-foreground bg-muted/30 border-muted' 
               : goalMet 
-                ? 'bg-green-100 text-green-800 border-green-200' 
+                ? 'bg-gradient-to-b from-success/20 to-success/30 text-success border-success/50 shadow-sm' 
                 : bottles > 0 
-                  ? 'bg-blue-50 text-blue-800 border-blue-200'
-                  : 'bg-background border-border'
+                  ? 'bg-gradient-to-b from-water-light to-water-medium/30 text-primary border-water-medium/50'
+                  : 'bg-background border-border hover:border-water-medium/30'
           }`}
         >
-          <span className="font-medium">{day}</span>
+          <span className="font-bold">{day}</span>
           {!isFuture && bottles > 0 && (
-            <span className="text-xs">{bottles}</span>
+            <span className="text-xs font-semibold">
+              {goalMet ? '🏆' : '💧'} {bottles}
+            </span>
           )}
         </div>
       );
@@ -123,33 +125,44 @@ const Analytics = () => {
   const monthName = currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50 pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-water-light via-background to-water-medium pb-20">
       <div className="p-6 space-y-6">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
+            📊 Analytics
+          </h1>
+          <p className="text-muted-foreground mt-2">Track your hydration journey</p>
+        </div>
+
         {/* Stats Grid */}
         <div className="grid grid-cols-2 gap-4">
-          <Card>
-            <CardContent className="p-4 text-center">
+          <Card className="text-center border-2 border-primary/20 bg-gradient-to-b from-card to-primary/10">
+            <CardContent className="p-4">
+              <div className="text-3xl font-bold text-primary mb-1">💧</div>
               <div className="text-2xl font-bold text-primary">{stats.totalBottles}</div>
               <div className="text-sm text-muted-foreground">Total Bottles</div>
             </CardContent>
           </Card>
           
-          <Card>
-            <CardContent className="p-4 text-center">
+          <Card className="text-center border-2 border-accent/30 bg-gradient-to-b from-card to-accent/20">
+            <CardContent className="p-4">
+              <div className="text-3xl font-bold text-accent-foreground mb-1">📈</div>
               <div className="text-2xl font-bold text-primary">{stats.dailyAverage}</div>
               <div className="text-sm text-muted-foreground">Daily Average</div>
             </CardContent>
           </Card>
           
-          <Card>
-            <CardContent className="p-4 text-center">
+          <Card className="text-center border-2 border-success/30 bg-gradient-to-b from-card to-success/20">
+            <CardContent className="p-4">
+              <div className="text-3xl mb-1">🔥</div>
               <div className="text-2xl font-bold text-primary">{stats.dayStreak}</div>
               <div className="text-sm text-muted-foreground">Day Streak</div>
             </CardContent>
           </Card>
           
-          <Card>
-            <CardContent className="p-4 text-center">
+          <Card className="text-center border-2 border-warning/30 bg-gradient-to-b from-card to-warning/20">
+            <CardContent className="p-4">
+              <div className="text-3xl mb-1">🏆</div>
               <div className="text-2xl font-bold text-primary">{stats.goalsMetDays}</div>
               <div className="text-sm text-muted-foreground">Goals Met</div>
             </CardContent>
@@ -157,14 +170,16 @@ const Analytics = () => {
         </div>
 
         {/* Calendar */}
-        <Card>
+        <Card className="border-2 border-water-medium/20 bg-gradient-to-b from-card to-water-light/10">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <Button variant="ghost" size="icon" onClick={() => navigateMonth('prev')}>
+              <Button variant="ghost" size="icon" onClick={() => navigateMonth('prev')} className="hover:bg-water-light">
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <CardTitle className="text-lg">{monthName}</CardTitle>
-              <Button variant="ghost" size="icon" onClick={() => navigateMonth('next')}>
+              <CardTitle className="text-lg flex items-center gap-2">
+                📅 {monthName}
+              </CardTitle>
+              <Button variant="ghost" size="icon" onClick={() => navigateMonth('next')} className="hover:bg-water-light">
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
@@ -172,7 +187,7 @@ const Analytics = () => {
           <CardContent>
             <div className="grid grid-cols-7 gap-1 mb-2">
               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                <div key={day} className="h-8 flex items-center justify-center text-sm font-medium text-muted-foreground">
+                <div key={day} className="h-8 flex items-center justify-center text-sm font-bold text-muted-foreground">
                   {day}
                 </div>
               ))}

@@ -84,11 +84,34 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'water-drop': {
+					'0%': { transform: 'translateY(-10px)', opacity: '0' },
+					'50%': { opacity: '1' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'wave': {
+					'0%, 100%': { transform: 'scaleX(1)' },
+					'50%': { transform: 'scaleX(1.1)' }
+				},
+				'bounce-gentle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-4px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'water-drop': 'water-drop 0.6s ease-out',
+				'wave': 'wave 2s ease-in-out infinite',
+				'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite'
+			},
+			colors: {
+				'water-light': 'hsl(var(--water-light))',
+				'water-medium': 'hsl(var(--water-medium))',
+				'water-dark': 'hsl(var(--water-dark))',
+				'success': 'hsl(var(--success))',
+				'warning': 'hsl(var(--warning))'
 			}
 		}
 	},
