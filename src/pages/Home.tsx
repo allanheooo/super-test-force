@@ -71,72 +71,125 @@ const Home = () => {
   const progress = (bottleCount / preferences.dailyGoal) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-water-light via-background to-water-medium pb-20">
+    <div className="min-h-screen bg-gradient-primary pb-20">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 bg-card/90 backdrop-blur-sm border-b border-water-medium/20 shadow-sm">
-        <Droplets className="h-8 w-8 text-primary animate-wave" />
-        <h1 className="text-xl font-bold text-primary flex items-center gap-2">
-          💧 HydroTracker
+      <div className="flex items-center justify-between p-6 pt-12">
+        <Droplets className="h-8 w-8 text-white/80" />
+        <h1 className="text-2xl font-bold text-white">
+          HydroTracker
         </h1>
         <Link to="/settings">
-          <Button variant="ghost" size="icon" className="hover:bg-water-light transition-colors">
+          <Button variant="ghost" size="icon" className="hover:bg-white/10 text-white/80">
             <Settings className="h-6 w-6" />
           </Button>
         </Link>
       </div>
 
       {/* Main Content */}
-      <div className="p-6 space-y-6">
+      <div className="px-6 space-y-6">
+        {/* Today's Progress Header */}
+        <div className="text-white/90 mb-6">
+          <h2 className="text-3xl font-light mb-1">Today's Progress</h2>
+          <p className="text-white/70">
+            {new Date().toLocaleDateString('en-US', { 
+              weekday: 'long', 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}
+          </p>
+        </div>
+
+        {/* Large Progress Display */}
+        <div className="text-center text-white mb-8">
+          <div className="text-8xl font-light mb-2">
+            {bottleCount}
+          </div>
+          <p className="text-xl text-white/80 mb-1">
+            of {preferences.dailyGoal} bottles
+          </p>
+          <p className="text-white/60">
+            {bottleCount * preferences.bottleSize} / {preferences.dailyGoal * preferences.bottleSize} {preferences.unit}
+          </p>
+        </div>
+
         {/* Progress Card */}
-        <Card className="text-center border-2 border-primary/20 bg-gradient-to-b from-card to-water-light/30 shadow-lg">
-          <CardContent className="pt-6">
-            <div className="text-5xl font-bold text-primary mb-2 animate-bounce-gentle">
-              {bottleCount} / {preferences.dailyGoal}
+        <Card className="bg-gradient-card backdrop-blur-sm border-0 shadow-xl rounded-3xl overflow-hidden">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-medium text-muted-foreground">Daily Progress</h3>
+              <span className="text-lg font-semibold text-primary">
+                {Math.round(progress)}%
+              </span>
             </div>
-            <p className="text-muted-foreground mb-4 flex items-center justify-center gap-2">
-              🍼 bottles today {bottleCount >= preferences.dailyGoal && "🎉"}
-            </p>
-            <div className="relative mb-4">
+            
+            <div className="relative mb-6">
               <Progress 
                 value={Math.min(progress, 100)} 
-                className="h-4 bg-water-light border" 
+                className="h-3 bg-muted rounded-full" 
               />
-              {progress >= 100 && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xs font-bold text-white drop-shadow-lg">
-                    🏆 GOAL REACHED!
-                  </span>
-                </div>
-              )}
             </div>
-            <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-              💧 {preferences.bottleSize}{preferences.unit} bottles
-            </p>
+
+            {/* Water Drop Indicators */}
+            <div className="flex justify-center gap-3 mb-4">
+              {Array.from({ length: preferences.dailyGoal }, (_, i) => (
+                <div key={i} className="relative">
+                  <Droplets 
+                    className={`h-8 w-8 ${
+                      i < bottleCount 
+                        ? 'text-primary fill-primary' 
+                        : 'text-muted stroke-muted-foreground/30'
+                    }`}
+                  />
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
 
-        {/* Action Buttons */}
-        <div className="space-y-4">
-          <Button 
-            onClick={addBottle} 
-            size="lg" 
-            className="w-full text-lg py-6 bg-gradient-to-r from-primary to-water-dark hover:from-primary/90 hover:to-water-dark/90 transition-all duration-300 animate-water-drop shadow-lg"
-          >
-            <Plus className="h-6 w-6 mr-2" />
-            💧 +1 Bottle
-          </Button>
+        {/* Action Button */}
+        <Button 
+          onClick={addBottle} 
+          size="lg" 
+          className="w-full text-lg py-6 bg-ios-green hover:bg-ios-green-dark text-white font-semibold rounded-2xl shadow-lg transition-all duration-200 active:scale-95"
+        >
+          <Plus className="h-6 w-6 mr-2" />
+          Add 1 Bottle ({preferences.bottleSize} {preferences.unit})
+        </Button>
+
+        {/* Bottom Stats */}
+        <div className="grid grid-cols-2 gap-4 mt-8">
+          <Card className="bg-gradient-card backdrop-blur-sm border-0 shadow-lg rounded-2xl">
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-success mb-1">
+                {bottleCount}
+              </div>
+              <p className="text-sm text-muted-foreground">Day Streak</p>
+            </CardContent>
+          </Card>
           
+          <Card className="bg-gradient-card backdrop-blur-sm border-0 shadow-lg rounded-2xl">
+            <CardContent className="p-4 text-center">
+              <div className="text-2xl font-bold text-warning mb-1">
+                {bottleCount > 0 ? '17h 14m' : '--'}
+              </div>
+              <p className="text-sm text-muted-foreground">Until Reset</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Undo Button */}
+        {bottleCount > 0 && (
           <Button 
             onClick={removeBottle} 
-            variant="outline" 
+            variant="ghost" 
             size="lg" 
-            className="w-full border-2 border-muted hover:bg-muted/20 transition-colors"
-            disabled={bottleCount === 0}
+            className="w-full text-white/70 hover:bg-white/10 transition-colors rounded-2xl"
           >
             <Undo2 className="h-5 w-5 mr-2" />
-            ↩️ Undo
+            Undo Last Bottle
           </Button>
-        </div>
+        )}
       </div>
     </div>
   );

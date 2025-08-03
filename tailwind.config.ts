@@ -107,11 +107,18 @@ export default {
 				'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite'
 			},
 			colors: {
-				'water-light': 'hsl(var(--water-light))',
-				'water-medium': 'hsl(var(--water-medium))',
-				'water-dark': 'hsl(var(--water-dark))',
+				'ios-blue-light': 'hsl(var(--ios-blue-light))',
+				'ios-blue': 'hsl(var(--ios-blue))',
+				'ios-blue-dark': 'hsl(var(--ios-blue-dark))',
+				'ios-green': 'hsl(var(--ios-green))',
+				'ios-green-dark': 'hsl(var(--ios-green-dark))',
 				'success': 'hsl(var(--success))',
 				'warning': 'hsl(var(--warning))'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-success': 'var(--gradient-success)'
 			}
 		}
 	},

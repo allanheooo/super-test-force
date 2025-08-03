@@ -8,46 +8,58 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 205 100% 98%;
-    --foreground: 210 11% 15%;
+    --background: 210 100% 97%;
+    --foreground: 210 15% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 11% 15%;
+    --card-foreground: 210 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 11% 15%;
+    --popover-foreground: 210 15% 20%;
 
-    --primary: 200 98% 39%;
+    --primary: 210 100% 56%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 100% 96%;
-    --secondary-foreground: 200 98% 39%;
+    --secondary: 210 100% 95%;
+    --secondary-foreground: 210 100% 56%;
 
-    --muted: 200 50% 95%;
-    --muted-foreground: 200 10% 50%;
+    --muted: 210 50% 94%;
+    --muted-foreground: 210 20% 50%;
 
-    --accent: 180 100% 85%;
-    --accent-foreground: 200 98% 39%;
+    --accent: 210 100% 90%;
+    --accent-foreground: 210 100% 56%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 50% 90%;
-    --input: 200 50% 94%;
-    --ring: 200 98% 39%;
+    --border: 210 30% 88%;
+    --input: 210 30% 92%;
+    --ring: 210 100% 56%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Water-themed colors */
-    --water-light: 200 100% 95%;
-    --water-medium: 200 80% 80%;
-    --water-dark: 200 98% 39%;
-    --success: 140 70% 50%;
+    /* iPhone-inspired blue theme colors */
+    --ios-blue-light: 210 100% 85%;
+    --ios-blue: 210 100% 56%;
+    --ios-blue-dark: 210 100% 45%;
+    --ios-green: 130 70% 55%;
+    --ios-green-dark: 130 70% 45%;
+    --success: 130 70% 55%;
     --warning: 45 100% 60%;
     
-    /* Gradients */
-    --gradient-water: linear-gradient(135deg, hsl(200 100% 85%), hsl(200 98% 75%));
-    --gradient-success: linear-gradient(135deg, hsl(140 70% 60%), hsl(140 70% 45%));
+    /* Beautiful gradients matching the reference */
+    --gradient-primary: linear-gradient(135deg, hsl(210 100% 65%), hsl(210 100% 45%));
+    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
+    --gradient-success: linear-gradient(135deg, hsl(130 70% 60%), hsl(130 70% 50%));
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -67,44 +79,47 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 200 50% 8%;
-    --foreground: 200 20% 90%;
+    --background: 210 50% 8%;
+    --foreground: 210 20% 90%;
 
-    --card: 200 50% 10%;
-    --card-foreground: 200 20% 90%;
+    --card: 210 50% 12%;
+    --card-foreground: 210 20% 90%;
 
-    --popover: 200 50% 10%;
-    --popover-foreground: 200 20% 90%;
+    --popover: 210 50% 12%;
+    --popover-foreground: 210 20% 90%;
 
-    --primary: 200 100% 70%;
-    --primary-foreground: 200 50% 8%;
+    --primary: 210 100% 70%;
+    --primary-foreground: 210 50% 8%;
 
-    --secondary: 200 30% 15%;
-    --secondary-foreground: 200 20% 90%;
+    --secondary: 210 30% 18%;
+    --secondary-foreground: 210 20% 90%;
 
-    --muted: 200 30% 15%;
-    --muted-foreground: 200 10% 60%;
+    --muted: 210 30% 18%;
+    --muted-foreground: 210 10% 60%;
 
-    --accent: 200 50% 25%;
-    --accent-foreground: 200 20% 90%;
+    --accent: 210 50% 25%;
+    --accent-foreground: 210 20% 90%;
 
     --destructive: 0 75% 55%;
-    --destructive-foreground: 200 20% 90%;
+    --destructive-foreground: 210 20% 90%;
 
-    --border: 200 30% 20%;
-    --input: 200 30% 20%;
-    --ring: 200 100% 70%;
+    --border: 210 30% 20%;
+    --input: 210 30% 20%;
+    --ring: 210 100% 70%;
 
-    /* Dark theme water colors */
-    --water-light: 200 50% 15%;
-    --water-medium: 200 70% 40%;
-    --water-dark: 200 100% 70%;
-    --success: 140 60% 50%;
+    /* Dark theme iOS colors */
+    --ios-blue-light: 210 50% 20%;
+    --ios-blue: 210 100% 70%;
+    --ios-blue-dark: 210 100% 60%;
+    --ios-green: 130 60% 50%;
+    --ios-green-dark: 130 70% 40%;
+    --success: 130 60% 50%;
     --warning: 45 90% 60%;
     
     /* Dark gradients */
-    --gradient-water: linear-gradient(135deg, hsl(200 50% 20%), hsl(200 70% 35%));
-    --gradient-success: linear-gradient(135deg, hsl(140 60% 50%), hsl(140 70% 40%));
+    --gradient-primary: linear-gradient(135deg, hsl(210 50% 25%), hsl(210 70% 35%));
+    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --gradient-success: linear-gradient(135deg, hsl(130 60% 50%), hsl(130 70% 40%));
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
