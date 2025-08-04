@@ -42,7 +42,7 @@ const Home = () => {
     // Show congratulations if goal reached for the first time today
     if (preferences && newCount >= preferences.dailyGoal && !hasShownCongrats) {
       toast({
-        title: "🎉 Congratulations!",
+        title: "Congratulations!",
         description: "You've reached your daily hydration goal!",
       });
       setHasShownCongrats(true);

@@ -129,7 +129,7 @@ const Analytics = () => {
       <div className="p-6 space-y-6">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
-            📊 Analytics
+            Analytics
           </h1>
           <p className="text-muted-foreground mt-2">Track your hydration journey</p>
         </div>
@@ -177,7 +177,7 @@ const Analytics = () => {
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <CardTitle className="text-lg flex items-center gap-2">
-                📅 {monthName}
+                {monthName}
               </CardTitle>
               <Button variant="ghost" size="icon" onClick={() => navigateMonth('next')} className="hover:bg-water-light">
                 <ChevronRight className="h-4 w-4" />

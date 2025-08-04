@@ -127,7 +127,7 @@ const Settings = () => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground flex items-center gap-2">
-              💾 No account - using local storage
+              No account - using local storage
             </p>
           </CardContent>
         </Card>
@@ -142,7 +142,7 @@ const Settings = () => {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="bottleSize" className="flex items-center gap-2">
-                🍼 Bottle Size
+                Bottle Size
               </Label>
               <div className="flex gap-2">
                 <Input
@@ -168,7 +168,7 @@ const Settings = () => {
 
             <div className="space-y-2">
               <Label htmlFor="dailyGoal" className="flex items-center gap-2">
-                🏆 Daily Goal (bottles)
+                Daily Goal (bottles)
               </Label>
               <Input
                 id="dailyGoal"
@@ -181,7 +181,7 @@ const Settings = () => {
             </div>
 
             <Button onClick={savePreferences} className="w-full bg-gradient-to-r from-primary to-water-dark hover:from-primary/90 hover:to-water-dark/90 transition-all duration-300">
-              💾 Save Preferences
+              Save Preferences
             </Button>
           </CardContent>
         </Card>
@@ -197,7 +197,7 @@ const Settings = () => {
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline" className="w-full border-warning/30 hover:bg-warning/10">
-                  🔄 Reset Today's Progress
+                  Reset Today's Progress
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -217,7 +217,7 @@ const Settings = () => {
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline" className="w-full border-destructive/30 hover:bg-destructive/10">
-                  🗑️ Clear All Water Logs
+                  Clear All Water Logs
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -239,7 +239,7 @@ const Settings = () => {
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="destructive" className="w-full bg-gradient-to-r from-destructive to-destructive/80 hover:from-destructive/90 hover:to-destructive/70">
-                  ⚠️ Clear All Data
+                  Clear All Data
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
@@ -268,9 +268,9 @@ const Settings = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center">
-            <p className="text-primary font-semibold text-lg">💧 HydroTracker v1.0</p>
+            <p className="text-primary font-semibold text-lg">HydroTracker v1.0</p>
             <p className="text-muted-foreground text-sm mt-1 flex items-center justify-center gap-1">
-              Built with ❤️ using Lovable
+              Built with using Lovable
             </p>
           </CardContent>
         </Card>

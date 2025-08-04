@@ -51,13 +51,13 @@ const Onboarding = () => {
             Welcome to HydroTracker
           </CardTitle>
           <p className="text-muted-foreground text-lg">
-            Let's set up your hydration goals! 🎯
+            Let's set up your hydration goals!
           </p>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-3">
             <Label htmlFor="bottleSize" className="flex items-center gap-2 text-base font-medium">
-              🍼 Bottle Size
+              Bottle Size
             </Label>
             <div className="flex gap-2">
               <Input
@@ -83,7 +83,7 @@ const Onboarding = () => {
 
           <div className="space-y-3">
             <Label htmlFor="dailyGoal" className="flex items-center gap-2 text-base font-medium">
-              🏆 Daily Goal (bottles)
+              Daily Goal (bottles)
             </Label>
             <Input
               id="dailyGoal"
@@ -100,7 +100,7 @@ const Onboarding = () => {
             className="w-full bg-gradient-to-r from-primary to-water-dark hover:from-primary/90 hover:to-water-dark/90 text-lg py-4 shadow-lg transition-all duration-300" 
             size="lg"
           >
-            🚀 Start Tracking
+            Start Tracking
           </Button>
         </CardContent>
       </Card>
