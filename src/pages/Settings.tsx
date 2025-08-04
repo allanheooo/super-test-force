@@ -161,7 +161,7 @@ const Settings = () => {
           <CardContent className="space-y-3">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full border-warning/30 hover:bg-warning/10">
+                <Button variant="outline" className="w-full border-2 border-warning/50 text-warning hover:bg-warning/10 hover:border-warning/70">
                   Reset Today's Progress
                 </Button>
               </AlertDialogTrigger>
@@ -181,7 +181,7 @@ const Settings = () => {
 
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" className="w-full border-destructive/30 hover:bg-destructive/10">
+                <Button variant="outline" className="w-full border-2 border-destructive/50 text-destructive hover:bg-destructive/10 hover:border-destructive/70">
                   Clear All Water Logs
                 </Button>
               </AlertDialogTrigger>
@@ -203,7 +203,7 @@ const Settings = () => {
 
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="destructive" className="w-full bg-gradient-to-r from-destructive to-destructive/80 hover:from-destructive/90 hover:to-destructive/70">
+                <Button variant="destructive" className="w-full border-2 border-destructive bg-gradient-to-r from-destructive to-destructive/80 hover:from-destructive/90 hover:to-destructive/70 font-semibold">
                   Clear All Data
                 </Button>
               </AlertDialogTrigger>

@@ -71,7 +71,7 @@ const Home = () => {
   const progress = (bottleCount / preferences.dailyGoal) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-primary pb-20">
+    <div className="min-h-screen bg-gradient-primary pb-24">
       {/* Header */}
       <div className="flex items-center justify-between p-6 pt-12">
         <Droplets className="h-8 w-8 text-white/80" />
@@ -126,7 +126,7 @@ const Home = () => {
             <div className="relative mb-6">
               <Progress 
                 value={Math.min(progress, 100)} 
-                className="h-3 bg-muted rounded-full" 
+                className="h-4 bg-muted/20 rounded-full" 
               />
             </div>
 
