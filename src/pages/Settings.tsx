@@ -8,14 +8,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Separator } from "@/components/ui/separator";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { toast } from "@/hooks/use-toast";
-
 const Settings = () => {
   const [preferences, setPreferences] = useState<any>(null);
   const [bottleSize, setBottleSize] = useState("");
   const [unit, setUnit] = useState("oz");
   const [dailyGoal, setDailyGoal] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     const savedPrefs = localStorage.getItem("hydrotracker_preferences");
     if (savedPrefs) {
@@ -26,43 +24,36 @@ const Settings = () => {
       setDailyGoal(prefs.dailyGoal.toString());
     }
   }, []);
-
   const savePreferences = () => {
     if (!bottleSize || !dailyGoal) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
-        variant: "destructive",
+        variant: "destructive"
       });
       return;
     }
-
     const newPrefs = {
       ...preferences,
       bottleSize: parseFloat(bottleSize),
       unit,
-      dailyGoal: parseInt(dailyGoal),
+      dailyGoal: parseInt(dailyGoal)
     };
-
     localStorage.setItem("hydrotracker_preferences", JSON.stringify(newPrefs));
     setPreferences(newPrefs);
-    
     toast({
       title: "Success",
-      description: "Preferences updated successfully",
+      description: "Preferences updated successfully"
     });
   };
-
   const resetTodayProgress = () => {
     const today = new Date().toISOString().split('T')[0];
     localStorage.removeItem(`hydrotracker_${today}`);
-    
     toast({
       title: "Success",
-      description: "Today's progress has been reset",
+      description: "Today's progress has been reset"
     });
   };
-
   const clearAllWaterLogs = () => {
     const keysToRemove = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -71,15 +62,12 @@ const Settings = () => {
         keysToRemove.push(key);
       }
     }
-    
     keysToRemove.forEach(key => localStorage.removeItem(key));
-    
     toast({
       title: "Success",
-      description: "All water logs have been cleared",
+      description: "All water logs have been cleared"
     });
   };
-
   const clearAllData = () => {
     const keysToRemove = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -88,33 +76,24 @@ const Settings = () => {
         keysToRemove.push(key);
       }
     }
-    
     keysToRemove.forEach(key => localStorage.removeItem(key));
     navigate("/");
-    
     toast({
       title: "Success",
-      description: "All data cleared. Returning to onboarding.",
+      description: "All data cleared. Returning to onboarding."
     });
   };
-
   if (!preferences) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
+    return <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <p className="text-muted-foreground">Loading settings...</p>
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-water-light via-background to-water-medium pb-20">
+  return <div className="min-h-screen bg-gradient-to-br from-water-light via-background to-water-medium pb-20">
       <div className="p-6 space-y-6">
         <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">
-            ⚙️ Settings
-          </h1>
+          <h1 className="text-3xl font-bold text-primary flex items-center justify-center gap-2">Settings</h1>
           <p className="text-muted-foreground mt-2">Customize your hydration experience</p>
         </div>
 
@@ -145,14 +124,7 @@ const Settings = () => {
                 Bottle Size
               </Label>
               <div className="flex gap-2">
-                <Input
-                  id="bottleSize"
-                  type="number"
-                  value={bottleSize}
-                  onChange={(e) => setBottleSize(e.target.value)}
-                  className="flex-1 border-water-medium/30 focus:border-primary"
-                  placeholder="16"
-                />
+                <Input id="bottleSize" type="number" value={bottleSize} onChange={e => setBottleSize(e.target.value)} className="flex-1 border-water-medium/30 focus:border-primary" placeholder="16" />
                 <Select value={unit} onValueChange={setUnit}>
                   <SelectTrigger className="w-20 border-water-medium/30">
                     <SelectValue />
@@ -170,14 +142,7 @@ const Settings = () => {
               <Label htmlFor="dailyGoal" className="flex items-center gap-2">
                 Daily Goal (bottles)
               </Label>
-              <Input
-                id="dailyGoal"
-                type="number"
-                value={dailyGoal}
-                onChange={(e) => setDailyGoal(e.target.value)}
-                className="border-water-medium/30 focus:border-primary"
-                placeholder="8"
-              />
+              <Input id="dailyGoal" type="number" value={dailyGoal} onChange={e => setDailyGoal(e.target.value)} className="border-water-medium/30 focus:border-primary" placeholder="8" />
             </div>
 
             <Button onClick={savePreferences} className="w-full bg-gradient-to-r from-primary to-water-dark hover:from-primary/90 hover:to-water-dark/90 transition-all duration-300">
@@ -275,8 +240,6 @@ const Settings = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Settings;
