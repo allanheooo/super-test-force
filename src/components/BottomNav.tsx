@@ -12,7 +12,7 @@ const BottomNav = () => {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-muted/20 shadow-2xl z-50 rounded-t-3xl">
+    <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-muted/20 shadow-2xl z-50 rounded-t-3xl pb-safe">
       <div className="flex items-center justify-around h-20 px-4 pt-2">
         {navItems.map(({ path, icon: Icon, label }) => (
           <Link
@@ -32,7 +32,6 @@ const BottomNav = () => {
           </Link>
         ))}
       </div>
-      <div className="h-safe-area-inset-bottom" />
     </div>
   );
 };

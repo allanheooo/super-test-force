@@ -139,5 +139,23 @@ All colors MUST be HSL.
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    /* iOS safe area handling */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    /* Prevent zoom on iOS */
+    -webkit-text-size-adjust: 100%;
+    /* Smooth scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* iOS specific optimizations */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  /* Ensure minimum touch targets for iOS */
+  button, [role="button"], input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
